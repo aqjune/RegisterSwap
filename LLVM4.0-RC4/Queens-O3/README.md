@@ -21,7 +21,7 @@ be a performance bug of the x86-64 architecture.
 * Simplifications made
 
 - We made the following simplification from the original `Queens.c`.
-  + We removed all system calls by removing all occurrences of `printf`.
+  + We removed all system and library calls by removing all occurrences of `printf`.
   + We added a single line unused function `void foo() {}` before the main algorithm function `Try` in order to increase the size of the code section.
     This is misteriously needed to reproduce the speed up.
 

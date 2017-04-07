@@ -12,17 +12,6 @@ Initrand:                               # @Initrand
 	.size	Initrand, .Lfunc_end0-Initrand
 	.cfi_endproc
 
-	.globl	myprintf
-	.p2align	4, 0x90
-	.type	myprintf,@function
-myprintf:                               # @myprintf
-	.cfi_startproc
-# BB#0:
-	retq
-.Lfunc_end1:
-	.size	myprintf, .Lfunc_end1-myprintf
-	.cfi_endproc
-
 	.globl	Rand
 	.p2align	4, 0x90
 	.type	Rand,@function
@@ -35,8 +24,19 @@ Rand:                                   # @Rand
 	movq	%rax, seed(%rip)
                                         # kill: %EAX<def> %EAX<kill> %RAX<kill>
 	retq
+.Lfunc_end1:
+	.size	Rand, .Lfunc_end1-Rand
+	.cfi_endproc
+
+	.globl	foo
+	.p2align	4, 0x90
+	.type	foo,@function
+foo:                                    # @foo
+	.cfi_startproc
+# BB#0:
+	retq
 .Lfunc_end2:
-	.size	Rand, .Lfunc_end2-Rand
+	.size	foo, .Lfunc_end2-foo
 	.cfi_endproc
 
 	.globl	Try
@@ -464,9 +464,9 @@ main:                                   # @main
 	pushq	%rbx
 .Lcfi32:
 	.cfi_def_cfa_offset 56
-	subq	$264, %rsp              # imm = 0x108
+	subq	$248, %rsp
 .Lcfi33:
-	.cfi_def_cfa_offset 320
+	.cfi_def_cfa_offset 304
 .Lcfi34:
 	.cfi_offset %rbx, -56
 .Lcfi35:
@@ -480,56 +480,46 @@ main:                                   # @main
 .Lcfi39:
 	.cfi_offset %rbp, -16
 	xorl	%eax, %eax
-	leaq	28(%rsp), %r13
-	leaq	144(%rsp), %r15
-	leaq	32(%rsp), %r12
-	leaq	80(%rsp), %r14
-	leaq	224(%rsp), %rbx
+	leaq	12(%rsp), %r13
+	leaq	128(%rsp), %r15
+	leaq	16(%rsp), %r12
+	leaq	64(%rsp), %r14
+	leaq	208(%rsp), %rbx
 	.p2align	4, 0x90
 .LBB6_1:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_2 Depth 2
                                         #       Child Loop BB6_3 Depth 3
-                                        #         Child Loop BB6_4 Depth 4
-	movq	%rax, 16(%rsp)          # 8-byte Spill
-	xorl	%eax, %eax
+	movq	%rax, (%rsp)            # 8-byte Spill
+	movl	$1, %ebp
 	.p2align	4, 0x90
 .LBB6_2:                                #   Parent Loop BB6_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB6_3 Depth 3
-                                        #         Child Loop BB6_4 Depth 4
-	movl	%eax, 12(%rsp)          # 4-byte Spill
-	movl	$1, %ebp
+	xorl	%eax, %eax
 	.p2align	4, 0x90
 .LBB6_3:                                #   Parent Loop BB6_1 Depth=1
                                         #     Parent Loop BB6_2 Depth=2
-                                        # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB6_4 Depth 4
-	xorl	%eax, %eax
-	.p2align	4, 0x90
-.LBB6_4:                                #   Parent Loop BB6_1 Depth=1
-                                        #     Parent Loop BB6_2 Depth=2
-                                        #       Parent Loop BB6_3 Depth=3
-                                        # =>      This Inner Loop Header: Depth=4
+                                        # =>    This Inner Loop Header: Depth=3
 	leaq	-7(%rax), %rcx
 	leal	-8(%rax), %edx
 	cmpl	$7, %edx
-	ja	.LBB6_6
-# BB#5:                                 #   in Loop: Header=BB6_4 Depth=4
-	movl	$1, 4(%rsp,%rax,4)
-.LBB6_6:                                #   in Loop: Header=BB6_4 Depth=4
+	ja	.LBB6_5
+# BB#4:                                 #   in Loop: Header=BB6_3 Depth=3
+	movl	$1, -12(%rsp,%rax,4)
+.LBB6_5:                                #   in Loop: Header=BB6_3 Depth=3
 	cmpq	$2, %rcx
-	jl	.LBB6_8
-# BB#7:                                 #   in Loop: Header=BB6_4 Depth=4
-	movl	$1, 116(%rsp,%rax,4)
+	jl	.LBB6_7
+# BB#6:                                 #   in Loop: Header=BB6_3 Depth=3
+	movl	$1, 100(%rsp,%rax,4)
 	cmpq	$7, %rcx
-	jg	.LBB6_9
-.LBB6_8:                                #   in Loop: Header=BB6_4 Depth=4
-	movl	$1, 80(%rsp,%rax,4)
-.LBB6_9:                                #   in Loop: Header=BB6_4 Depth=4
+	jg	.LBB6_8
+.LBB6_7:                                #   in Loop: Header=BB6_3 Depth=3
+	movl	$1, 64(%rsp,%rax,4)
+.LBB6_8:                                #   in Loop: Header=BB6_3 Depth=3
 	incq	%rax
 	cmpq	$24, %rax
-	jne	.LBB6_4
-# BB#10:                                #   in Loop: Header=BB6_3 Depth=3
+	jne	.LBB6_3
+# BB#9:                                 #   in Loop: Header=BB6_2 Depth=2
 	movl	$1, %edi
 	movq	%r13, %rsi
 	movq	%r15, %rdx
@@ -539,20 +529,15 @@ main:                                   # @main
 	callq	Try
 	incl	%ebp
 	cmpl	$51, %ebp
-	jne	.LBB6_3
-# BB#11:                                #   in Loop: Header=BB6_2 Depth=2
-	movl	12(%rsp), %eax          # 4-byte Reload
-	incl	%eax
-	cmpl	$100, %eax
 	jne	.LBB6_2
-# BB#12:                                #   in Loop: Header=BB6_1 Depth=1
-	movq	16(%rsp), %rax          # 8-byte Reload
+# BB#10:                                #   in Loop: Header=BB6_1 Depth=1
+	movq	(%rsp), %rax            # 8-byte Reload
 	incl	%eax
-	cmpl	$100, %eax
+	cmpl	$10000, %eax            # imm = 0x2710
 	jne	.LBB6_1
-# BB#13:
+# BB#11:
 	xorl	%eax, %eax
-	addq	$264, %rsp              # imm = 0x108
+	addq	$248, %rsp
 	popq	%rbx
 	popq	%r12
 	popq	%r14
