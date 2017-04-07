@@ -1,4 +1,27 @@
-### Performance gap between register r13 and r14
+### Performance gain by swaping register r13 and r14 of x86-64
+
+* Introduction
+
+We made a surprising observation that in a certain circumstance, by
+simply swaping the registers r13 and r14 of x86-64, we gain 5~10%
+speed up. We do not understand why this happens. We guess that it may
+be a performance bug of the x86-64 architecture.
+
+* Original Observation
+
+- We generate `Queens.s`
+  + from `Queens.c` in the LLVM Nightly Test (`https://github.com/llvm-mirror/test-suite/blob/master/SingleSource/Benchmarks/Stanford/Queens.c`)
+  + using Clang 4.0 RC 4 (`clang -O3 -S -o Queens.s Queens.c`).
+- We generate `Queens
+simply swap "r13" and "r14" in 
+
+
+
+
+
+
+
+
 
 - `Queens.s` : assembly generated from `Queens.c` , which is in LLVM Nightly Test (`https://github.com/llvm-mirror/test-suite/blob/master/SingleSource/Benchmarks/Stanford/Queens.c`)
     + Compiled by Clang 4.0 RC 4 (`clang -O3 -S -o Queens.s Queens.c`).

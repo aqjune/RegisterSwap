@@ -171,24 +171,18 @@ void Doit () {
 	}
 
 	Try(1, &q, b, a, c, x);
-	//RegisterSwap: commented it out
-	//if ( !q ) printf (" Error in Queens.\n");
+	if ( !q ) printf (" Error in Queens.\n");
 }
 
 void Queens (int run) {
     int i;
     for ( i = 1; i <= 50; i++ ) Doit();
-    //RegisterSwap: commented it out
-    //printf("%d\n", run + 1);
+	 printf("%d\n", run + 1);
 }
 
 int main()
 {
 	int i;
-	//RegisterSwap: added extra loops
-  	for (i = 0; i < 10000; i++) Queens(i);
+	for (i = 0; i < 100; i++) Queens(i);
 	return 0;
 }
-
-//RegisterSwap: add a dead function
-void foo() { }
