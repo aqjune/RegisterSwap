@@ -158,7 +158,7 @@ void Try(int i, int *q, int a[], int b[], int c[], int x[]) {
 	    }
 	}
 }
-	
+
 void Doit () {
 	int i,q;
 	int a[9], b[17], c[15], x[9];

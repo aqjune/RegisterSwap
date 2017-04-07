@@ -121,6 +121,8 @@ int Rand () {
     return( (int)seed );     /* typecast back to int WR*/
 }
 
+//RegisterSwap: add a dead function
+void foo() {}
 
     /* The eight queens problem, solved 50 times. */
 /*
@@ -158,7 +160,7 @@ void Try(int i, int *q, int a[], int b[], int c[], int x[]) {
 	    }
 	}
 }
-	
+
 void Doit () {
 	int i,q;
 	int a[9], b[17], c[15], x[9];
@@ -189,6 +191,3 @@ int main()
   	for (i = 0; i < 10000; i++) Queens(i);
 	return 0;
 }
-
-//RegisterSwap: add a dead function
-void foo() { }
