@@ -1,0 +1,103 @@
+===================
+----- Queens.gcc , 1 -----
+
+real    0m3.016s
+user    0m3.016s
+sys     0m0.000s
+----- Queens.gcc , 2 -----
+
+real    0m3.007s
+user    0m3.004s
+sys     0m0.000s
+----- Queens.gcc , 3 -----
+
+real    0m3.006s
+user    0m3.004s
+sys     0m0.000s
+----- Queens.gcc , 4 -----
+
+real    0m3.011s
+user    0m3.008s
+sys     0m0.000s
+----- Queens.gcc , 5 -----
+
+real    0m3.022s
+user    0m3.020s
+sys     0m0.000s
+----- Queens.rev.gcc , 1 -----
+
+real    0m3.375s
+user    0m3.372s
+sys     0m0.000s
+----- Queens.rev.gcc , 2 -----
+
+real    0m3.383s
+user    0m3.380s
+sys     0m0.000s
+----- Queens.rev.gcc , 3 -----
+
+real    0m3.376s
+user    0m3.372s
+sys     0m0.004s
+----- Queens.rev.gcc , 4 -----
+
+real    0m3.380s
+user    0m3.380s
+sys     0m0.000s
+----- Queens.rev.gcc , 5 -----
+
+real    0m3.377s
+user    0m3.376s
+sys     0m0.000s
+===================
+----- Queens.rev.gcc , 1 -----
+
+real    0m3.378s
+user    0m3.376s
+sys     0m0.000s
+----- Queens.rev.gcc , 2 -----
+
+real    0m3.378s
+user    0m3.376s
+sys     0m0.000s
+----- Queens.rev.gcc , 3 -----
+
+real    0m3.380s
+user    0m3.376s
+sys     0m0.000s
+----- Queens.rev.gcc , 4 -----
+
+real    0m3.375s
+user    0m3.372s
+sys     0m0.000s
+----- Queens.rev.gcc , 5 -----
+
+real    0m3.379s
+user    0m3.376s
+sys     0m0.000s
+----- Queens.gcc , 1 -----
+
+real    0m3.007s
+user    0m3.004s
+sys     0m0.000s
+----- Queens.gcc , 2 -----
+
+real    0m3.013s
+user    0m3.012s
+sys     0m0.000s
+----- Queens.gcc , 3 -----
+
+real    0m3.005s
+user    0m3.004s
+sys     0m0.000s
+----- Queens.gcc , 4 -----
+
+real    0m3.010s
+user    0m3.008s
+sys     0m0.000s
+----- Queens.gcc , 5 -----
+
+real    0m3.027s
+user    0m3.024s
+sys     0m0.004s
+
