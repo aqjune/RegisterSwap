@@ -1,13 +1,15 @@
 ### Performance gain by swapping register r13 and r14 of x86-64
 
-* Introduction
+----
+
+#### Introduction
 
 We made a surprising observation that in a certain circumstance, by
 simply swapping the registers r13 and r14 of x86-64, we gain 5~10%
 speed up. We do not understand why this happens. We guess that it may
 be a performance bug of the x86-64 architecture.
 
-* Original Observation
+#### Original Observation
 
 - We generate `Queens.s`
   + from `Queens.c` in the LLVM Nightly Test 
@@ -18,7 +20,7 @@ be a performance bug of the x86-64 architecture.
 - We generate executables `Queens` and `Queens.swap` from the assemly files.
 - We observe 5~10% speed up in `Queens.swp` compared to `Queens` on all our x86-64 machines.
 
-* Simplifications made
+#### Simplifications made
 
 - We made the following simplification from the original `Queens.c`.
   + We removed all system and library calls by removing all occurrences of `printf`.
@@ -36,13 +38,13 @@ be a performance bug of the x86-64 architecture.
 - We generate executables `Queens` and `Queens.swap` from the assemly files.
 - We observe 5~10% speed up in `Queens.swp` compared to `Queens` on all our x86-64 machines.
 
-* Effect of the code section size
+#### Effect of the code section size
 
 - In order to show the effect of the code section size, we perfomed the same test after removing the code for the unused function `foo`.
 
 - Int this case, we do not observe any speed up after swapping `r13` and `r14`.
 
-* Instructions for test
+#### Instructions for test
 
 - `Queens-org.c`: the original source code of the Queens benchmark.
 
