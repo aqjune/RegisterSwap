@@ -1,12 +1,13 @@
-if [ "$#" -ne 1 ]; then
-  echo "run.sh <clang/gcc>"
+if [ "$#" -le 0 ]; then
+  echo "run.sh <clang/gcc> [.elim]"
   exit 1
 fi
 
 cc=$1
-A[0]="Queens Queens.swap Queens.elim Queens.elim.swap"
+elim=$2
+A[0]="Queens$elim Queens$elim.swap"
 
-for k in 0 1 2 3 ; do
+for k in 0 1 ; do
   echo "==================="
   for j in ${A[k]} ; do
     for i in 1 2 3 ; do

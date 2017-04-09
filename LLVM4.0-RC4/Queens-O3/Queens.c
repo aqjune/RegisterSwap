@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 
 #define  nil		0
 #define	 false		0
@@ -117,14 +116,13 @@ void Initrand () {
     seed = 74755L;   /* constant to long WR*/
 }
 
-//RegisterSwap: add a dead function
-void myprintf() { }
-
 int Rand () {
     seed = (seed * 1309L + 13849L) & 65535L;  /* constants to long WR*/
     return( (int)seed );     /* typecast back to int WR*/
 }
 
+//RegisterSwap: add a dead function
+void foo() {}
 
     /* The eight queens problem, solved 50 times. */
 /*
@@ -162,7 +160,7 @@ void Try(int i, int *q, int a[], int b[], int c[], int x[]) {
 	    }
 	}
 }
-	
+
 void Doit () {
 	int i,q;
 	int a[9], b[17], c[15], x[9];
@@ -175,7 +173,7 @@ void Doit () {
 	}
 
 	Try(1, &q, b, a, c, x);
-  //RegisterSwap: commented it out
+	//RegisterSwap: commented it out
 	//if ( !q ) printf (" Error in Queens.\n");
 }
 
@@ -189,9 +187,7 @@ void Queens (int run) {
 int main()
 {
 	int i;
-  //RegisterSwap: added extra loops
-  for (int j = 0; j < 100; j++) {
-  	for (i = 0; i < 100; i++) Queens(i);
-  }
+	//RegisterSwap: added extra loops
+  	for (i = 0; i < 10000; i++) Queens(i);
 	return 0;
 }
